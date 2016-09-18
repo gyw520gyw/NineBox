@@ -18,7 +18,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+#define viewW 100
+#define viewH 120
+#define totalCount 12
+#define colCount 3
+#define startY 30
+    
+    CGFloat marginX = (self.view.bounds.size.width - colCount * viewW) / (colCount + 1);
+    CGFloat marginY = 20;
+    
+    for(int i = 0; i < totalCount; i++) {
+        
+        CGFloat row = i / colCount;
+        CGFloat col = i % colCount;
+        
+        CGFloat itemX = marginX + col * (viewW + marginX);
+        CGFloat itemY = startY + marginY + row * (viewH + marginY);
+        
+        
+        UIView *itemView = [[UIView alloc]initWithFrame:CGRectMake(itemX, itemY, viewW, viewH)];
+        
+        itemView.backgroundColor = [UIColor blackColor];
+        
+        
+        [self.view addSubview:itemView];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
